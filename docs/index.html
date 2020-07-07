@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>Doc :: fb_mhash</title>
+</head>
+<body>
+<h1>fb_mhash 1.0</h1>
+<h3>Richard Kotal, <a href="mailto:info@waplikace.cz">info@waplikace.cz</a>, <a href="http://www.aolserver.cz">www.aolserver.cz</a></h3>
+The UDF module implements interface to mhash library (<a href="http://mhash.sourceforge.net">http://mhash.sourceforge.net</a>).
+<br>
+The module was tested with 0.9.4 version of mhash library.
+<br>
+<br>
+fb_mhash has three categories of the commands:
+<ul>
+<li><a href="keygen/index.html">key generator UDF</a> - generate key from password (mcrypt,...)</li>
+<li><a href="hash/index.html">hash UDF</a> - create hash string</li>
+<li><a href="hmac/index.html">hmac UDF</a> - create hmac string</li>
+</ul>
+<br>
+Small samples:
+<pre>select first 1 mhash_keygen('hex','MCRYPT',mycol,'MD5','',10,'',0),mycol from mytable;</pre>
+expected result: "Hello world", "3e25960a79dbc69b674c"
+<br>
+<br>
+<pre>select first 1 mhash_hash('hex','MD5',mycol),mycol from mytable;</pre>
+expected result: "Hello world", "3e25960a79dbc69b674cd4ec67a72c62"
+<br>
+<br>
+
+<pre>select first 1 mhash_hmac('base64','MD5',mycol,'password'),mycol from mytable;</pre>
+expected result: "Hello world", "MyPQK3X37QIxu6NfSOK68g=="
+
+</body>
+</html>

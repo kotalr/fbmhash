@@ -1,0 +1,25 @@
+# ---------------------------------------------------------------------
+# General Compiler and linker Defines for Windows
+# ---------------------------------------------------------------------
+CC=/opt/cross/w64/bin/x86_64-w64-mingw32-gcc
+CFLAGS=		-MD -MP -DPIC -DDDL_EXPORT -DWIN32 -I. -I/opt/cross/w64/include/fb/2.0 -m32 -I/opt/cross/w64/include/mhash -c
+FB_LIB=	 /opt/cross/w64/lib/fb/2.0/ib_util_ms.lib -L/opt/cross/w64/lib -m32 -lw64_mhash
+RM=		rm -f
+STRIP=/opt/cross/w64/bin/x86_64-w64-mingw32-strip
+
+
+.SUFFIXES: .o .c 
+
+
+all:	fb_mhash.dll
+
+w64_fb_mhash.o:fb_mhash.c config.h inc.uuencode.c inc.utils.c inc.keygen.c inc.hash.c inc.hmac.c
+	$(CC) $< $(CFLAGS) -o $@
+
+fb_mhash.dll: w64_fb_mhash.o
+	$(CC) -shared -m32 -o $@ -Wl,--out-implib,libw64_fb_mhash.a -Wl,--kill-at $< $(FB_LIB)
+	$(STRIP) $@
+	@echo ------------------------------------------------------
+	@echo You need to copy fb_mhash.dll to the interbase lib directory
+	@echo in order for the server to load it. 
+	@echo ------------------------------------------------------

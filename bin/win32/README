@@ -1,0 +1,33 @@
+the windows binary distribution of the fb_mhash UDF 
+===============================================================================
+
+LIBRARY DESCRIPTION
+
+============================================================================
+the name of the library | the type of the library | the location of the file
+----------------------------------------------------------------------------
+                        |                         | %WINDOWS_HOME%\system32
+w32_mhash.dll *)           | system                  | or                      
+	                |                         | %DB_HOME%\bin          
+----------------------------------------------------------------------------
+fb_mhash.dll            | UDF                     | %DB_HOME%\UDF
+============================================================================
+
+*) remove older library mhash.dll
+
+%WINDOWS_HOME% - the location (the directory) of the windows system, for example c:\windows
+%DB_HOME% - the location (the directory) of the database server, for example c:\Program Files\Firebird
+
+
+TESTED WITH
+
+system:
+    - Windows XP
+
+database server:
+    - Interbase 6.0 open edition
+    - Interbase 7.5 trial
+    - Firebird 1.0.x
+    - Firebird 1.5.x
+    - Firebird 2.0
+    - Firebird 2.5

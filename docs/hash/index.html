@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Doc :: hash :: algorithm, generate, ...</title>
+</head>
+<body>
+<a href="../index.html">up</a><br>
+<h1>Hash</h1>
+
+<h2>generate HASH from a string (VARCHAR)</h2>
+<table border="1">
+<tr><td align="right">command:</td><td><tt><font color="navyblue">mhash_hash('<i>outfmt</i>','<i>algorithm_name</i>','<i>string</i>') </font></tt></td></tr>
+<tr><td align="right">parameters:</td><td>
+<i>outfmt</i> - a type of the output format for the generated key :: <b>hex</b>: hexadecimal string; <b>raw</b>: raw (binary) string; <b>base64</b>: binary base64 encoded string <br>
+<i>algorithm_name</i> - the name of the hash algorithm: <b>MD5</b>, <b>SHA1</b>, ... <br>
+<i>string</i> - a string you want to hash </td></tr>
+<tr><td align="right">result:</td><td>This returns HASH string. Otherwise, empty string is returned on failure.</td></tr>
+<tr><td align="right">example:</td><td>select first 1 mhash_hash('base64','SHA1',mycol),mycol from mytable; = "Hello world", "e1AsOh9IyGCa4hLN+2Od7jlnP14=" <br>
+select first 1 mhash_hash('hex','SHA1',mycol),mycol from mytable; = "Hello world", "7b502c3a1f48c8609ae212cdfb639dee39673f5e" 
+</td></tr>
+</table>
+
+
+<br>
+<br>
+
+<h2>generate HASH from a BLOB data</h2>
+<table border="1">
+<tr><td align="right">command:</td><td><tt><font color="navyblue">mhash_hash_blob('<i>outfmt</i>','<i>algorithm_name</i>','<i>blob_data</i>') </font></tt></td></tr>
+<tr><td align="right">parameters:</td><td>
+<i>outfmt</i> - a type of the output format for the generated key :: <b>hex</b>: hexadecimal string; <b>raw</b>: raw (binary) string; <b>base64</b>: binary base64 encoded string <br>
+<i>algorithm_name</i> - the name of the hash algorithm: <b>MD5</b>, <b>SHA1</b>, ... <br>
+<i>blob_data</i> - a BLOB data you want to hash </td></tr>
+<tr><td align="right">result:</td><td>This returns HASH string. Otherwise, empty string is returned on failure.</td></tr>
+<tr><td align="right">example:</td><td>myblobcol = "Hello world" ; select first 1 mhash_hash('base64','SHA1',myblobcol) from myblobtable; = "e1AsOh9IyGCa4hLN+2Od7jlnP14=" <br>
+myblobcol = "Hello world" ; select first 1 mhash_hash('hex','SHA1',myblobcol) from myblobtable; = "7b502c3a1f48c8609ae212cdfb639dee39673f5e" 
+</td></tr>
+</table>
+
+
+<br>
+<br>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>Doc :: hmac :: algorithm, generate, ...</title>
+</head>
+<body>
+<a href="../index.html">up</a><br>
+<h1>Hmac</h1>
+
+<h2>generate HMAC from a string (VARCHAR) and the given password</h2>
+<table border="1">
+<tr><td align="right">command:</td><td><tt><font color="navyblue">mhash_hmac('<i>outfmt</i>','<i>algorithm_name</i>','<i>string</i>','<i>password</i>') </font></tt></td></tr>
+<tr><td align="right">parameters:</td><td>
+<i>outfmt</i> - a type of the output format for the generated key :: <b>hex</b>: hexadecimal string; <b>raw</b>: raw (binary) string; <b>base64</b>: binary base64 encoded string <br>
+<i>algorithm_name</i> - the name of the hash algorithm: <b>MD5</b>, <b>SHA1</b>, ... <br>
+<i>string</i> - a string you want to hash <br>
+<i>password</i> - a hmac password </td></tr>
+</td></tr>
+<tr><td align="right">result:</td><td>This returns HMAC string. Otherwise, empty string is returned on failure.</td></tr>
+<tr><td align="right">example:</td><td>select first 1 mhash_hmac('base64','SHA1',mycol,'foobar'),mycol from mytable; = "Hello world", "BSD+81FW3Y22Hxl+LT8oXdm1UGo=" <br>
+select first 1 mhash_hmac('hex','SHA1',mycol,'foobar'),mycol from mytable; = "Hello world", "0520fef35156dd8db61f197e2d3f285dd9b5506a" 
+</td></tr>
+</table>
+
+<br>
+<br>
+
+<h2>generate HMAC from a BLOB data and the given password</h2>
+<table border="1">
+<tr><td align="right">command:</td><td><tt><font color="navyblue">mhash_hmac_blob('<i>outfmt</i>','<i>algorithm_name</i>','<i>blob_data</i>','<i>password</i>') </font></tt></td></tr>
+<tr><td align="right">parameters:</td><td>
+<i>outfmt</i> - a type of the output format for the generated key :: <b>hex</b>: hexadecimal string; <b>raw</b>: raw (binary) string; <b>base64</b>: binary base64 encoded string <br>
+<i>algorithm_name</i> - the name of the hash algorithm: <b>MD5</b>, <b>SHA1</b>, ... <br>
+<i>blob_data</i> - a BLOB data you want to hash <br>
+<i>password</i> - a hmac password </td></tr>
+</td></tr>
+<tr><td align="right">result:</td><td>This returns HMAC string. Otherwise, empty string is returned on failure.</td></tr>
+<tr><td align="right">example:</td><td>myblobcol = "Hello world" ; select first 1 mhash_hmac('base64','SHA1',myblobcol,'foobar') from myblobtable; = "BSD+81FW3Y22Hxl+LT8oXdm1UGo=" <br>
+myblobcol = "Hello world" ; select first 1 mhash_hmac('hex','SHA1',myblobcol,'foobar') from myblobtable; = "0520fef35156dd8db61f197e2d3f285dd9b5506a" 
+</td></tr>
+</table>
+
+<br>
+<br>
+
+</body>
+</html>

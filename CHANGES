@@ -1,0 +1,8 @@
+ver. 1.1 - 20060703
+    - Support for the hash and hmac calculation from a BLOB data was added.
+ver. 1.2 - 20060725
+    - Improved compatibility with Windows
+    - Fixed a bug (fb_mhash.c: fb_mhash_GenOutStr renamed to correct fb_mhash_GetOutStr)
+    - Added the compiled versions of the library for Windows and Linux
+ver. 1.2.02 - 20160524
+    - Improved compatibility with Windows
